@@ -6,5 +6,6 @@
 * [x] build header
 * [x] bulid login page
 * [x] setup react contex api
-* [ ] setup spotify api
+* [x] setup spotify api
 * [ ] build home page
+* [ ] bulid game

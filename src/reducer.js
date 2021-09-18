@@ -1,12 +1,19 @@
 export const initialState = {
+  token: null,
   user: null,
   playlists: []
 };
 
 const reducer = (state, action) => {
-  console.log('Action 💚:', action);
+  console.log(`🐢 ${action.type}:`, action.payload);
 
   switch (action.type) {
+    case 'SET_TOKEN':
+      return {
+        ...state,
+        token: action.payload
+      }
+
     case 'SET_USER':
       return {
         ...state,

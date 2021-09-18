@@ -1,13 +1,46 @@
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { useStateValue } from './StateProvider';
+import { useEffect } from 'react';
+
 import Header from './components/Header/Header';
 import LoginPage from './views/LoginPage/LoginPage';
-import {useStateValue} from './StateProvider';
+import SpotifyAuth from './components/SpotifyAuth/SpotifyAuth';
+
+import SpotifyWebApi from 'spotify-web-api-js';
+import HomePage from './views/GamePage/HomePage';
+
+const spotify = new SpotifyWebApi();
 
 function App() {
-  const [{ user }, dispatch] = useStateValue();
+  const [{ token }, dispatch] = useStateValue();
 
-  console.log(user);
+  useEffect(() => {
+    if (!token) return;
+
+    spotify.setAccessToken(token);
+
+    spotify
+      .getMe()
+      .then((user) => {
+        const { id } = user;
+
+        dispatch({
+          type: 'SET_USER',
+          payload: user
+        });
+
+        spotify
+          .getUserPlaylists(id, { limit: 50 })
+          .then(({ items }) => {
+            dispatch({
+              type: 'SET_PLAYLISTS',
+              payload: items
+            });
+          })
+      });
+
+  }, [token]);
 
   return (
     <div className="App">
@@ -28,13 +61,17 @@ function App() {
             <h1>Game here</h1>
           </Route>
 
+          <Route path="/auth">
+            <SpotifyAuth />
+          </Route>
+
           <Route path="/login">
             <LoginPage />
           </Route>
 
           <Route path="/">
             <Header />
-            <h1>home hape</h1>
+            <HomePage />
           </Route>
         </Switch>
       </Router>
