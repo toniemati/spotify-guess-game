@@ -1,0 +1,47 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  position: sticky;
+  top: 0;
+
+  padding: 1rem;
+  background: #f9f9f9;
+}
+
+.header__links {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 1rem
+}
+
+.header__links a {
+  padding: .5rem 1rem;
+
+  border-radius: 2rem;
+
+  text-decoration: none;
+  color: inherit;
+
+  transition: all .2s ease-in-out;
+}
+
+.header__links a:hover {
+  font-weight: 800;
+  color: #1ED760;
+  background: #eee;
+}
+
+.header__user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  gap: 1rem;
+  
+  font-weight: bold;
+  
+  text-decoration: none;
+  color: #1ED760;
+}
