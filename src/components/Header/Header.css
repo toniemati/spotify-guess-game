@@ -17,10 +17,8 @@
 }
 
 .header__links a {
-  padding: .5rem 1rem;
-
   border-radius: 2rem;
-
+  padding: .5rem 1rem;
   text-decoration: none;
   color: inherit;
 
@@ -33,15 +31,22 @@
   background: #eee;
 }
 
+.header__links .active {
+  font-weight: 800;
+  color: #1ED760;
+  background: #eee;
+}
+
 .header__user {
   display: flex;
   justify-content: center;
   align-items: center;
-  
   gap: 1rem;
   
-  font-weight: bold;
-  
-  text-decoration: none;
+  font-weight: bold;  
   color: #1ED760;
+}
+
+.header__user p {
+  cursor: pointer;
 }

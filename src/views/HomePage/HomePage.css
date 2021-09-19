@@ -1,0 +1,13 @@
+.homePage {
+  padding: 20px;
+}
+
+.homePage h1 {
+  margin: 10px 0 20px 10px;
+}
+
+.homePage__playlists {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}

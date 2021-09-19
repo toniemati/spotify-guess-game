@@ -8,7 +8,8 @@ import LoginPage from './views/LoginPage/LoginPage';
 import SpotifyAuth from './components/SpotifyAuth/SpotifyAuth';
 
 import SpotifyWebApi from 'spotify-web-api-js';
-import HomePage from './views/GamePage/HomePage';
+import HomePage from './views/HomePage/HomePage';
+import GamePage from './views/GamePage/GamePage';
 
 const spotify = new SpotifyWebApi();
 
@@ -58,7 +59,7 @@ function App() {
 
           <Route path="/game">
             <Header />
-            <h1>Game here</h1>
+            <GamePage />
           </Route>
 
           <Route path="/auth">

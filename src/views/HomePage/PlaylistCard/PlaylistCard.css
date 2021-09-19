@@ -1,0 +1,47 @@
+.playlistCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 20px;
+
+  border-radius: 1rem;
+  box-shadow: 0 0 10px 5px hsl(0, 0%, 80%);
+
+  margin: 20px;
+}
+
+.playlistCard img {
+  height: 200px;
+  object-fit: contain;
+  border-radius: .5rem;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+}
+
+.playlistCard__name {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: .25rem;
+}
+
+.playlistCard__songs {
+  color: hsl(0, 0%, 20%);
+}
+
+.playlistCard__description {
+  color: hsl(0, 0%, 50%);
+}
+
+@media only screen and (max-width: 1200px) {
+  .playlistCard img {
+    height: 20vw;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .playlistCard img {
+    width: 80vw;
+    height: auto;
+  }
+}
