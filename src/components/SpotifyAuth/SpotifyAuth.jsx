@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useHistory } from 'react-router';
 import { getTokenFromUrl } from '../../spotify';
 import { useStateValue } from '../../StateProvider';
 
 const SpotifyAuth = () => {
   const [{}, dispatch] = useStateValue();
-  const [token, setToken] = useState('');
   const history = useHistory();
 
   useEffect(() => {

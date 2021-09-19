@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './GamePage.css';
 import Game from './Game/Game';
 import SelectDifficulty from './SelectDifficulty/SelectDifficulty';

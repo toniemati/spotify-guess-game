@@ -1,3 +1,35 @@
 .game {
-  color: blue;
+  display: flex;
+  flex-direction: column;
+}
+
+.game__info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.game__startButton {
+  font-size: 2rem;
+  font-weight: 800;
+
+  margin-top: 8rem;
+  padding: 3rem 6rem;
+  background: hsl(300, 30%, 40%);
+  color: hsl(0, 0%, 95%);
+  letter-spacing: .25rem;
+  border-radius: 5rem;
+
+  border: none;
+  outline: none;
+
+  cursor: pointer;
+  transition: all .1s ease-in-out;
+}
+
+.game__startButton:hover {
+  box-shadow: 0 0 20px 5px hsl(300, 30%, 40%);
+  color: hsl(300, 30%, 40%);
+  background: hsl(0, 0%, 95%);
 }

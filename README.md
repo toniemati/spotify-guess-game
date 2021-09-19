@@ -9,8 +9,8 @@
 * [x] setup spotify api
 * [x] build home page
 * [x] bulid game page
-  * [ ] select playlist
-  * [ ] select difficulty
+  * [x] select playlist
+  * [x] select difficulty
   * [ ] play song
   * [ ] check answer
   * [ ] score / next
