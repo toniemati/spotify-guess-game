@@ -13,8 +13,23 @@ const Header = () => {
 
   const handleLogout = () => {
     dispatch({
+      type: 'SET_TOKEN',
+      payload: null
+    });
+
+    dispatch({
       type: 'SET_USER',
       payload: null
+    });
+
+    dispatch({
+      type: 'SET_SPOTIFY',
+      payload: null
+    });
+
+    dispatch({
+      type: 'SET_PLAYLISTS',
+      payload: []
     });
   }
 

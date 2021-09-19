@@ -21,6 +21,11 @@ function App() {
 
     spotify.setAccessToken(token);
 
+    dispatch({
+      type: 'SET_SPOTIFY',
+      payload: spotify
+    });
+
     spotify
       .getMe()
       .then((user) => {

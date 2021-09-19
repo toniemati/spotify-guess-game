@@ -8,4 +8,10 @@
 * [x] setup react contex api
 * [x] setup spotify api
 * [x] build home page
-* [ ] bulid game
+* [x] bulid game page
+  * [ ] select playlist
+  * [ ] select difficulty
+  * [ ] play song
+  * [ ] check answer
+  * [ ] score / next
+  * [ ] display result  
