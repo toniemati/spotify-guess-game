@@ -8,6 +8,15 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
+
+  font-size: 1.5rem;
+}
+
+.game__loopIcon {
+  margin: 8rem auto 0;
+  font-size: 10rem !important;
+  animation: loopIcon 1s linear infinite;
+  color: hsl(300, 30%, 40%);
 }
 
 .game__startButton {
@@ -34,16 +43,49 @@
   background: hsl(0, 0%, 95%);
 }
 
-.game__loopIcon {
-  margin: 8rem auto 0;
-  font-size: 10rem !important;
-  animation: loopIcon 1s linear infinite;
-  color: hsl(300, 30%, 40%);
+.game__points {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: hsl(0, 0%, 30%);
 }
 
 .game__guesses {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.game__summary {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.game__summary p {
+  font-size: 1.2rem;
+}
+
+.game__summary button {
+  padding: 10px 20px;
+  margin: 1.2rem auto;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  font-weight: 800;
+  color: hsl(0, 0%, 95%);
+
+  background: hsl(90, 50%, 40%);
+  cursor: pointer;
+
+  transition: all .1s ease-in-out;
+}
+
+.game__summary button:hover {
+  box-shadow: 0 0 20px 5px hsl(90, 50%, 40%);
+  color: hsl(90, 50%, 40%);
+  background: hsl(0, 0%, 95%);
 }
 
 @keyframes loopIcon {

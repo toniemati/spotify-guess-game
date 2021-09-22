@@ -24,7 +24,6 @@ const Game = ({ playlist, difficulty }) => {
   const gameLoop = () => {
     if (round >= maxRound) {
       stopAudio();
-      alert('End, adding score, show again and return back');
       return;
     }
 
@@ -50,6 +49,10 @@ const Game = ({ playlist, difficulty }) => {
     setIsTimerStared(true);
     audio.current.play();
     
+  }
+
+  const handleRestartGame = () => {
+    console.log('restart');
   }
 
   const handleGuess = (trackId) => {
@@ -159,14 +162,22 @@ const Game = ({ playlist, difficulty }) => {
 
       {isGameStarted &&
         <div>
-          <p>round: {round}</p>
-          <p>points: {points}</p>
+          <div className="game__points">
+            <p>{points} points</p>
+            <p>/</p>
+            <p>{round} round</p>
+          </div>
 
-          {isTimerStarted && (
+          {isTimerStarted ? (
             <div className="game__guesses">
               {currentFourTracks.map((track) => (
                 <GuessRow key={track.track.id} handleGuess={handleGuess} track={track} />
               ))}
+            </div>
+          ) : (
+            <div className="game__summary">
+              <p>Well done you got {points/maxRound * 100}%</p>
+              <button onClick={handleRestartGame}>Try again</button>
             </div>
           )}
         </div>
