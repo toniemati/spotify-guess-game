@@ -41,6 +41,11 @@
   color: hsl(300, 30%, 40%);
 }
 
+.game__guesses {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 @keyframes loopIcon {
   from {
     transform: rotate(0deg);

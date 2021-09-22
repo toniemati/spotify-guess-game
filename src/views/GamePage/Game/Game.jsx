@@ -2,6 +2,7 @@ import './Game.css';
 import { useStateValue } from '../../../StateProvider';
 import { useEffect, useRef, useState } from 'react';
 import LoopIcon from '@material-ui/icons/Loop';
+import GuessRow from './GuessRow/GuessRow';
 
 const Game = ({ playlist, difficulty }) => {
   const [{ spotify }] = useStateValue();
@@ -23,6 +24,7 @@ const Game = ({ playlist, difficulty }) => {
   const gameLoop = () => {
     if (round >= maxRound) {
       stopAudio();
+      alert('End, adding score, show again and return back');
       return;
     }
 
@@ -93,14 +95,14 @@ const Game = ({ playlist, difficulty }) => {
   useEffect(() => {
     if (!isTimerStarted) return;
 
-    let timer = 0;
+    let timer = 1;
 
     const interval = setInterval(() => {
       if (isGuessing) {
         clearInterval(interval);
         setIsGuessing(false);
         return;
-      } else if (timer > difficulty.time) {
+      } else if (timer >= difficulty.time) {
         clearInterval(interval);
         handleGuess();
         return;
@@ -161,9 +163,9 @@ const Game = ({ playlist, difficulty }) => {
           <p>points: {points}</p>
 
           {isTimerStarted && (
-            <div>
+            <div className="game__guesses">
               {currentFourTracks.map((track) => (
-                <p onClick={() => handleGuess(track.track.id)} key={track.track.id}>{track.track.name}</p>
+                <GuessRow key={track.track.id} handleGuess={handleGuess} track={track} />
               ))}
             </div>
           )}
