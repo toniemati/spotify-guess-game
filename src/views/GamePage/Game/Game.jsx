@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import LoopIcon from '@material-ui/icons/Loop';
 import GuessRow from './GuessRow/GuessRow';
 
-const Game = ({ playlist, difficulty }) => {
+const Game = ({ playlist, difficulty, volume }) => {
   const [{ spotify }] = useStateValue();
   const [tracks, setTracks] = useState([]);
   
@@ -24,6 +24,7 @@ const Game = ({ playlist, difficulty }) => {
   const gameLoop = () => {
     if (round >= maxRound) {
       stopAudio();
+      setIsGameStarted(false);
       return;
     }
 
@@ -45,14 +46,24 @@ const Game = ({ playlist, difficulty }) => {
     setUsedTracks(usedTracks => [...usedTracks, track]);
 
     audio.current.src = track.track.preview_url;
-    audio.current.volume = 0.2;
+    audio.current.volume = volume;
     setIsTimerStared(true);
     audio.current.play();
     
   }
 
   const handleRestartGame = () => {
-    console.log('restart');
+    setRounds(0);
+    setPoints(0);
+    setMaxRound(10);
+    setUsedTracks([]);
+    setCurrentFourTracks([]);
+    
+    setCurrentTrack(null);
+    setIsTimerStared(false);
+    setIsGuessing(false);
+    
+    setIsGameStarted(true);
   }
 
   const handleGuess = (trackId) => {
@@ -117,7 +128,7 @@ const Game = ({ playlist, difficulty }) => {
 
     return () => clearInterval(interval);
 
-  }, [isTimerStarted, isGuessing]);
+  }, [isTimerStarted, isGuessing, difficulty.time]);
 
   //* Check Game State
   useEffect(() => {
@@ -127,7 +138,7 @@ const Game = ({ playlist, difficulty }) => {
       setMaxRound(tracks.length);
 
     gameLoop();
-  }, [isGameStarted]);
+  }, [isGameStarted, tracks.length]);
 
   //* Getting tracks from api
   useEffect(() => {
@@ -141,7 +152,7 @@ const Game = ({ playlist, difficulty }) => {
       setTracks(tempTracks);
     }
     getTracks();
-  }, []);
+  }, [playlist.id, playlist.tracks.total, spotify]);
 
   return (
     <div className="game">
@@ -155,12 +166,12 @@ const Game = ({ playlist, difficulty }) => {
         <LoopIcon className="game__loopIcon" />
       )}
 
-      {(!isGameStarted && tracks.length) ?
-        <button onClick={() => setIsGameStarted(true)} className="game__startButton">Start {tracks.length}</button> :
-        ''
+      {(!isGameStarted && round < maxRound && tracks.length) ? (
+        <button onClick={() => setIsGameStarted(true)} className="game__startButton">Start {tracks.length}</button>
+        ) : ''
       }
 
-      {isGameStarted &&
+      {isGameStarted ? (
         <div>
           <div className="game__points">
             <p>{points} points</p>
@@ -174,13 +185,18 @@ const Game = ({ playlist, difficulty }) => {
                 <GuessRow key={track.track.id} handleGuess={handleGuess} track={track} />
               ))}
             </div>
-          ) : (
-            <div className="game__summary">
-              <p>Well done you got {points/maxRound * 100}%</p>
-              <button onClick={handleRestartGame}>Try again</button>
-            </div>
-          )}
+          ) : ''
+          }
         </div>
+      ) : ''
+      }
+
+      {!isGameStarted && round >= maxRound ? (
+        <div className="game__summary">
+          <p>Well done you got {points/maxRound * 100}%</p>
+          <button onClick={handleRestartGame}>Try again</button>
+        </div>
+      ) : ''
       }
 
       <audio ref={audio} />

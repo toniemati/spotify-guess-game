@@ -9,9 +9,11 @@ const LoginPage = () => {
   const history = useHistory();
 
   useEffect(() => {
-    if (token, user)
+    if (token, user) {
       history.push('/');
-  }, [token, user]);
+    }
+
+  }, [token, user, history]);
 
   return (
     <div className="loginPage">

@@ -37,7 +37,7 @@ const Header = () => {
     if (!user)
       history.push('/login');
 
-  }, [user]);
+  }, [user, history]);
 
   return (
     <div className="header">

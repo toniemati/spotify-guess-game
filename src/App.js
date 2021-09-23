@@ -46,7 +46,7 @@ function App() {
           })
       });
 
-  }, [token]);
+  }, [token, dispatch]);
 
   return (
     <div className="App">

@@ -19,7 +19,7 @@ const SpotifyAuth = () => {
     });
 
     history.push('/');
-  }, []);
+  }, [dispatch, history]);
 
   const redirect = () => {
     history.push('/login');

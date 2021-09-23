@@ -1,0 +1,54 @@
+.selectVolume {
+  width: clamp(500px, 100%, 1000px);
+}
+
+.selectVolume h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.selectVolume__content {
+  display: flex;
+  flex-direction: column;
+
+  margin: 1rem;
+}
+
+.selectVolume__content input {
+  margin: 0 auto;
+  width: clamp(100px, 100%, 500px);
+}
+
+.selectVolume__buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+
+  margin-top: 2rem;
+}
+
+.selectVolume__buttons div {
+  padding: 10px 20px;
+  margin: .8rem;
+  border-radius: 5px;
+  font-weight: 800;
+  color: hsl(0, 0%, 95%);
+
+  background: hsl(50, 50%, 40%);
+  cursor: pointer;
+
+  transition: all .1s ease-in-out;
+}
+
+.selectVolume__buttons div:hover {
+  box-shadow: 0 0 20px 5px hsl(50, 50%, 40%);
+  color: hsl(50, 50%, 40%);
+  background: hsl(0, 0%, 95%);
+}
+
+.selectVolume__buttons .disabled {
+  box-shadow: 0 0 20px 5px hsl(0, 0%, 60%);
+  color: hsl(0, 0%, 60%);
+  background: hsl(0, 0%, 95%);
+}
